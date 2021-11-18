@@ -10,11 +10,13 @@ class TimeSlotGenerator
 {
     public const INCREMENT = 15;
     public $schedule;
+    public $service;
     protected $interval;
 
     public function __construct(Schedule $schedule, Service $service)
     {
         $this->schedule = $schedule;
+        $this->service = $service;
         $this->interval = CarbonInterval::minutes(self::INCREMENT)
             ->toPeriod(
                 $schedule->date->setTimeFrom($schedule->start_time),
