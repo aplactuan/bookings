@@ -18,11 +18,14 @@
     </div>
     <div class="flex items-center justify-between px-3 border-b-2 border-gray-200 pb-2">
         @foreach($this->calendarWeekInterval as $day)
-            <button type="button" class="text-center group cursor-pointer focus:outline-none">
+            <button type="button" class="text-center group cursor-pointer focus:outline-none" wire:click="setDate({{ $day->timestamp }})">
                 <div class="text-xs leading-none text-gray-700 mb-2">
                     {{ $day->format('D') }}
                 </div>
-                <div class="text-lg leading-none p-1 rounded-full w-9 h-9 group-hover:bg-gray-200 flex items-center justify-center">
+                <div
+                    class="text-lg leading-none p-1 rounded-full w-9 h-9 group-hover:bg-gray-200 flex items-center justify-center
+                        {{ $date === $day->timestamp ? 'bg-gray-200' : '' }}
+                    ">
                     {{ $day->format('d') }}
                 </div>
             </button>

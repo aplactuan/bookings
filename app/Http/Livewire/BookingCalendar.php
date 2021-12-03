@@ -7,11 +7,18 @@ use Livewire\Component;
 
 class BookingCalendar extends Component
 {
+    public $date;
     public $calendarStartDate;
 
     public function mount()
     {
         $this->calendarStartDate = now();
+        $this->date = now()->timestamp;
+    }
+
+    public function setDate($timestamp)
+    {
+        $this->date = $timestamp;
     }
 
     public function getCalendarWeekIntervalProperty()
